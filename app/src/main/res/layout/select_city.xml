@@ -3,17 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:id="@+id/search_city"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:background="#ffcd2626" >
+        android:id="@+id/selectcity_title"
+        android:layout_width="match_parent"
+        android:layout_height="45.0dp"
+        android:background="@color/weather_rose">
         <TextView
             android:id="@+id/title_name"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:text="当前城市：北京"
-            android:textColor="#ffffffff"
+            android:textColor="@color/white"
             android:textSize="20.0dip" />
         <ImageView
             android:id="@+id/title_back"
@@ -31,18 +31,53 @@
             android:background="#A71717"
             android:gravity="center" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/title_top"
+    <cn.edu.pku.zhangqixun.miniweather.ClearEditText
+        android:id="@+id/search_city"
+        android:layout_below="@id/selectcity_title"
+        android:layout_width="match_parent"
+        android:layout_height="42.0dp"
+        android:layout_margin="10.0dp"
+        android:drawablePadding="8.0dp"
+        android:paddingBottom="8.0dp"
+        android:paddingTop="8.0dp"
+        android:paddingLeft="10.0dp"
+        android:background="@drawable/contact_search_box_edittext_keyword_background"
+        android:drawableLeft="@drawable/magnifying_glass"
+        android:drawableRight="@drawable/select_city_clear"
+        android:lines="1"
+        android:ellipsize="end"
+        android:hint="搜索全国城市(中文/拼音首字母)"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_cc"
+        android:textSize="18.0sp"
+        />
+    <FrameLayout
+        android:layout_below="@id/search_city"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ListView
-            android:layout_below="@id/search_city"
-            android:id="@+id/title_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            >
-        </ListView>
-        ></RelativeLayout>
+            android:id="@+id/selectcity_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:divider="@null" />
+
+        <TextView
+            android:id="@+id/listview_dialog"
+            android:layout_width="66.0dp"
+            android:layout_height="56.0dp"
+            android:layout_gravity="center"
+            android:background="@drawable/show_head__letter_toast_bg"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30.0dp"
+            android:visibility="invisible" />
+
+        <chenwt.pku.edu.cn.myweather.SideBar
+            android:id="@+id/listview_sidebar"
+            android:layout_width="30.0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"/>
+    </FrameLayout>
 </RelativeLayout>

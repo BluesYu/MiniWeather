@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
     <!-- title bar -->
     <include
-        android:id="@+id/title"
         layout="@layout/title_bar"/>
     <include
         layout="@layout/weather_today"/>
