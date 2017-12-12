@@ -198,7 +198,7 @@
                 android:layout_toRightOf="@id/weather_img"
                 android:lines="1"
                 android:ellipsize="end"
-                android:text="微风"
+                android:text="微风习习"
                 android:textColor="@android:color/white"
                 android:textSize="20.0sp" />
         </RelativeLayout>

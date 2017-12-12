@@ -24,6 +24,7 @@ import cn.edu.pku.zhangqixun.bean.City;
 
 /**
  * Created by T440P on 2017/10/18.
+ * function：选择城市。
  */
 public class SelectCity extends Activity implements View.OnClickListener {
 /*    private ImageView mBackBtn;
@@ -50,9 +51,9 @@ public class SelectCity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_back:  //点击左上角返回则关掉选择城市列表页面返回主页面
-                Intent i = new Intent();
-                i.putExtra("cityCode", "101160101");
-                setResult(RESULT_OK, i);
+//                Intent i = new Intent();
+//                i.putExtra("cityCode", "101160101");
+//                setResult(RESULT_OK, i);
                 finish();
                 break;
             default:
@@ -105,6 +106,7 @@ public class SelectCity extends Activity implements View.OnClickListener {
                 }
             }
         });
+
         MyApplication myApplication = (MyApplication) getApplication();
         mCityList = myApplication.getCityList();   //获取到在MyApplication中从数据库取得的城市列表
         //如果要更改列表每一项的显示内容（省份城市或是什么的），到SortAdapter类中找到对应的TextView修改
@@ -144,7 +146,6 @@ public class SelectCity extends Activity implements View.OnClickListener {
         Log.d("myFilter", filterStr);
         String upperFilterStr = filterStr.toUpperCase();
 
-//        Log.d("myFilter", String.valueOf(TextUtils.isEmpty(filterStr)));
         if (TextUtils.isEmpty(filterStr)) {
             filterDataList.clear();
             for (City city : mCityList) {

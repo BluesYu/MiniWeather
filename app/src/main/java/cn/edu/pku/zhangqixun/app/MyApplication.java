@@ -16,9 +16,11 @@ import cn.edu.pku.zhangqixun.bean.City;
 
 /**
  * Created by T440P on 2017/10/25.
+ * function：控制线程，读取数据库。
  */
 
 public class MyApplication extends Application {
+    //系统组件之一，生命周期即整个程序的生命周期，onCreate方法在Activity的onCreate之前
     private static final String TAG = "MyAPP";
     private static MyApplication mApplication;
     private CityDB mCityDB;
@@ -28,41 +30,45 @@ public class MyApplication extends Application {
         super.onCreate();
         Log.d(TAG,"MyApplication->Oncreate");
         mApplication = this;
-        mCityDB = openCityDB();
-        initCityList();
+        mCityDB = openCityDB();//打开数据库
+        initCityList();      //初始化城市列表
     }
     private void initCityList(){
         mCityList = new ArrayList<City>();
         new Thread(new Runnable() {
+            // 读取数据库属于耗时操作，需要在非主线程中完成
             @Override
             public void run() {
-// TODO Auto-generated method stub
-                prepareCityList();
+//TODO Auto-generated method stub
+                prepareCityList();//准备城市列表
+                Log.d(TAG,"citylist ready");
             }
+
         }).start();
     }
     private boolean prepareCityList() {
-        mCityList = mCityDB.getAllCity();
-        int i=0;
-        for (City city : mCityList) {
-            i++;
-            String cityName = city.getCity();
-            String cityCode = city.getNumber();
-            Log.d(TAG,cityCode+":"+cityName);
-        }
-        Log.d(TAG,"i="+i);
+        mCityList = mCityDB.getAllCity();//调用CityDB类，获取城市列表所有信息
+//        int i=0;
+//        for (City city : mCityList) { //遍历城市列表打印看看是否获取到数据库中的城市名字和代码
+//            i++;
+//            String cityName = city.getCity();
+//            String cityCode = city.getNumber();
+//            Log.d(TAG,cityCode+":"+cityName);
+//        }
+//        Log.d(TAG,"i="+i);
+        Log.d(TAG,"prepareCityList ready");
         return true;
     }
-    public List<City> getCityList() {
+    public List<City> getCityList() {//获取citylist
         return mCityList;
     }
 
     public static MyApplication getInstance(){
-
         return mApplication;
     }
 
     private CityDB openCityDB() {
+        //打开指定路径下的数据库，如果路径不存在则从assets中读取数据库并写入指定路径
         String path = "/data"
                 + Environment.getDataDirectory().getAbsolutePath
                 ()

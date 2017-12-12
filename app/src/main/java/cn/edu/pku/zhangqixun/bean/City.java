@@ -2,6 +2,9 @@ package cn.edu.pku.zhangqixun.bean;
 
 /**
  * Created by T440P on 2017/10/25.
+ * function：城市信息。
+ * 公共类用于保存共有城市列表数据，
+ * 存入（setXXX）和读取（getXXX）都通过面向对象的方法来处理。
  */
 
 public class City {

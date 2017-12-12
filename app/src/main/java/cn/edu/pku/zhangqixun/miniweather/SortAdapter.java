@@ -16,6 +16,7 @@ import cn.edu.pku.zhangqixun.bean.City;
 public class SortAdapter extends BaseAdapter implements SectionIndexer{
     private List<City> list = null;
     private Context mContext;
+
     public SortAdapter(Context mContext, List<City> list) {
         this.mContext = mContext;
         this.list = list;
