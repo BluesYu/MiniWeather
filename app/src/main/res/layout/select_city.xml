@@ -74,7 +74,7 @@
             android:textSize="30.0dp"
             android:visibility="invisible" />
 
-        <chenwt.pku.edu.cn.myweather.SideBar
+        <cn.edu.pku.zhangqixun.miniweather.SideBar
             android:id="@+id/listview_sidebar"
             android:layout_width="30.0dp"
             android:layout_height="match_parent"

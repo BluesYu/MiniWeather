@@ -27,15 +27,15 @@ import cn.edu.pku.zhangqixun.bean.City;
             //获取数据库中的所有城市信息，并返回一张列表
             List<City> list = new ArrayList<City>();
             //用游标循环遍历取数据库中的数据，这里加上order by firstpy才能让List按第一个字拼音的首字母排序，否则乱序
-            Cursor c = db.rawQuery("SELECT * from " + CITY_TABLE_NAME, null);
+            Cursor c = db.rawQuery("SELECT * from " + CITY_TABLE_NAME + " order by firstpy",null);
             while (c.moveToNext()) {
                 String province = c.getString(c.getColumnIndex("province"));
-                        String city = c.getString(c.getColumnIndex("city"));
+                String city = c.getString(c.getColumnIndex("city"));
                 String number = c.getString(c.getColumnIndex("number"));
-                        String allPY = c.getString(c.getColumnIndex("allpy"));
+                String allPY = c.getString(c.getColumnIndex("allpy"));
                 String allFirstPY = c.getString(c.getColumnIndex("allfirstpy"));
-                        String firstPY = c.getString(c.getColumnIndex("firstpy"));
-                                City item = new City(province, city, number, firstPY, allPY,allFirstPY);
+                String firstPY = c.getString(c.getColumnIndex("firstpy"));
+                City item = new City(province, city, number, firstPY, allPY,allFirstPY);
                 list.add(item);
             }
             return list;

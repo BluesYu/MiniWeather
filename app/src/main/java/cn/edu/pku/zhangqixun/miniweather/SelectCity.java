@@ -1,6 +1,5 @@
 package cn.edu.pku.zhangqixun.miniweather;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +10,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -26,11 +25,8 @@ import cn.edu.pku.zhangqixun.bean.City;
  * Created by T440P on 2017/10/18.
  * function：选择城市。
  */
-public class SelectCity extends Activity implements View.OnClickListener {
-/*    private ImageView mBackBtn;
-    private ListView mList;
-    private List<City> cityList
-    private Myadapter myadapter;*/
+public class SelectCity extends AppCompatActivity implements View.OnClickListener{
+
     private TextView selectTitleTv, mDialogLetterTv;
     private ClearEditText mClearEditText;
     private SideBar mSideBar;
@@ -52,7 +48,7 @@ public class SelectCity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.title_back:  //点击左上角返回则关掉选择城市列表页面返回主页面
 //                Intent i = new Intent();
-//                i.putExtra("cityCode", "101160101");
+//                i.putExtra("cityCode", "101160101");//测试用的数据
 //                setResult(RESULT_OK, i);
                 finish();
                 break;
@@ -117,18 +113,6 @@ public class SelectCity extends Activity implements View.OnClickListener {
         mAdapter = new SortAdapter(SelectCity.this, filterDataList);
         mCityListLV.setAdapter(mAdapter);
 
-//        ArrayList<String> mCityArrayList = new ArrayList<>();   //不new会指向空
-//        for (int i=0; i<mCityList.size(); i++){     //ArrayList使用索引循环来遍历效率最高，此外还有for-each方法和迭代器方法
-////            String noNumber = Integer.toString(i + 1);
-//            String cityCode = mCityList.get(i).getNumber();
-//            String provinceName = mCityList.get(i).getProvince();
-//            String cityName = mCityList.get(i).getCity();   //获取数据库中的城市名字列表
-////            mCityArrayList.add("NO." + noNumber + ":" + cityCode + " - " + provinceName + " - " + cityName);
-//            mCityArrayList.add(provinceName + " - " + cityName + "(" + cityCode + ")");
-//        }
-//        mCityListLV = (ListView) findViewById(R.id.selectcity_listview);   //绑定ListView控件，绑定数据与ListView的适配器
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectCity.this, android.R.layout.simple_list_item_1, mCityArrayList);
-//        mCityListLV.setAdapter(adapter);
 //添加ListView项的点击事件并绑定
         mCityListLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -163,34 +147,11 @@ public class SelectCity extends Activity implements View.OnClickListener {
             }
         }
         mAdapter.updateListView(filterDataList);
+        if (filterDataList.isEmpty()) {  //如果关键字找到的列表为空（即找不到对应项目）抖动ClearEditText并给出提示信息
+            mClearEditText.setStartShakeAnimation();
+            Toast.makeText(SelectCity.this, "找不到对应城市哟！请检查搜索词！" + "\n" + "支持中文/拼音首字母的模糊搜索~~~", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 
-       /* mList = (ListView) findViewById(R.id.title_list);
-        MyApplication myApplication = (MyApplication) getApplication();
-        cityList = myApplication.getCityList();
-        for (City city:cityList){
-            //   filterDataList.add(city);
-        }
-        myadapter = new Myadapter(SelectCity.this.cityList);
-        mList.setAdapter(myadapter);
-        mList.setOnItemClickListener(){
-            @Override
-            // public void onItemClick(AdapterView<?> adapterView,View view,int position,long l){
-            //     City city = filterDateList.get(position);
-            //     Intent i =new Intent();
-            //    i putExtra("cityCode",city.getNumber());
-            //    setResult(RESULT_OK,i);
-            //    finish();
-        }
-
-    }
-    public class Myadapter extends BaseAdapter{
-        private  List<String> list;
-        public MyAdapter(List<String> list){
-            this.list=list;
-        }
-
-    }
-}*/
 

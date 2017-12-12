@@ -63,7 +63,7 @@ public class MyApplication extends Application {
         return mCityList;
     }
 
-    public static MyApplication getInstance(){
+    public static MyApplication geiInstance(){
         return mApplication;
     }
 

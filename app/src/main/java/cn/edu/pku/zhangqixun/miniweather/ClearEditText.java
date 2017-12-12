@@ -1,4 +1,5 @@
 package cn.edu.pku.zhangqixun.miniweather;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -11,12 +12,13 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
+import android.support.v7.widget.AppCompatEditText;
 /**
  * author：created by 余星星 on 2017/11/22 14:30
  * E-mail：2549721818@qq.com
  */
 
-public class ClearEditText extends EditText implements OnFocusChangeListener, TextWatcher {
+public class ClearEditText extends android.support.v7.widget.AppCompatEditText implements OnFocusChangeListener, TextWatcher {
     /**
      * *@brief :删除按钮的引用
      */

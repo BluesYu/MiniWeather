@@ -1,4 +1,5 @@
 package cn.edu.pku.zhangqixun.miniweather;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,22 +12,28 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * author：created by 余星星 on 2017/11/22 14:46
- * E-mail：2549721818@qq.com
+ * Created by Administrator on 2017/11/19.
+ * SideBar类就是ListView右侧的字母索引View，我们需要使用setTextView(TextView mTextDialog)来设置用来显示当前按下的字母的TextView,
+ * 以及使用setOnTouchingLetterChangedListener方法来设置回调接口，在回调方法onTouchingLetterChanged(String s)中来处理不同的操作。
  */
+
 public class SideBar extends View {
     // 触摸事件
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;
-    // 26个字母
+    // 26个字母 + #号
     public static String[] b = { "A", "B", "C", "D", "E", "F", "G", "H", "I",
             "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
             "W", "X", "Y", "Z", "#" };
     private int choose = -1;// 选中
     private Paint paint = new Paint();
+
     private TextView mTextDialog;
+
     public void setTextView(TextView mTextDialog) {
         this.mTextDialog = mTextDialog;
     }
+
+
     public SideBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
@@ -40,7 +47,7 @@ public class SideBar extends View {
     }
 
     /**
-     * *@brief :重写这个方法
+     * 重写这个方法
      */
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -120,8 +127,9 @@ public class SideBar extends View {
     }
 
     /**
-     * *@brief :接口
-     * @author coder
+     * 接口
+     *
+     * @author witt
      *
      */
     public interface OnTouchingLetterChangedListener {

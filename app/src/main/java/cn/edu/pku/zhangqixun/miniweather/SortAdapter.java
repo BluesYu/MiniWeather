@@ -81,8 +81,6 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
         TextView tvLetter;
         TextView tvTitle;
     }
-
-
     /**
      * 根据ListView的当前位置获取分类的首字母的char ascii值
      */
