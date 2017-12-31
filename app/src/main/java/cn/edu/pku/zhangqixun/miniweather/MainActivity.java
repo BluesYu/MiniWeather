@@ -39,7 +39,6 @@ import cn.edu.pku.zhangqixun.util.NetUtil;
  * Created by yxx on 2017/10/6.
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
-
     private SharedPreferences sp; //实例化SharedPreference对象，用于存取天气数据
     private static final int UPDATE_TODAY_WEATHER = 1;
     private TextView cityTv, timeTv,temperatureTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView mCitySelect;
     private ProgressBar mUpdatePgb;
     private ImageView weatherImg, pmImg;
-
     private TextView yesterdayDateTv, yesterdayHighTv, yesterdayLowTv, yesterdayTypeTv,
             todayDateTv, todayHighTv, todayLowTv, todayTypeTv,
             tomorrowDateTv, tomorrowHighTv, tomorrowLowTv, tomorrowTypeTv,
@@ -61,11 +59,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ViewPager futureViewPager;
     private PagerAdapter futurePagAdapter;
     private LayoutInflater futureInflater;
-    //    private PagerTabStrip futurePagTitle;       //ViewPager的标题
+    // private PagerTabStrip futurePagTitle;       //ViewPager的标题
     private ImageView[] futureDots;
     private int[] futureIndicator = {R.id.future_indicator_first, R.id.future_indicator_second};
 
-    Calendar cDate = Calendar.getInstance();        //获取月份加入日期数据中显示
+    Calendar cDate = Calendar.getInstance();       //获取月份加入日期数据中显示
     String mMonth = String.valueOf(cDate.get(Calendar.MONTH) + 1);
 
     private Handler mHandler = new Handler(){   //线程间消息处理机制，MessageQueue是一个存放消息对象的队列
@@ -281,7 +279,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 用于接收SelectCity Activity返回的数据，重写的Activity的onActivityResult方法↓
      * @param requestCode, resultCode, Intent data
      */
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             String newCityCode= data.getStringExtra("cityCode");//通过意图对象获取到SelectCity传来的新的城市代码
             Log.d("myWeather", "选择的城市代码为"+newCityCode);

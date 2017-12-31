@@ -68,7 +68,6 @@
             android:text="当前湿度:57%"
             android:textColor="@android:color/white"
             android:textSize="15.0sp" />
-
         <!-- PM2.5整体信息块 -->
         <LinearLayout
             android:id="@+id/pm2_5_content"
